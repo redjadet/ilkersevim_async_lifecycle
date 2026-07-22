@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3
+
+- Explain how lifecycle helpers prevent double completion and stream emissions
+  after teardown.
+- Link general resource cleanup to `ilkersevim_disposables`.
+- Rewrite package metadata around those use cases.
+
 ## 0.1.2
 
 - Prove GitHub Actions OIDC publish path after Pub.dev Admin enablement.

@@ -3,6 +3,13 @@
 Completer helpers and safe `StreamController` lifecycle utilities for Dart
 async code. Dependency-free beyond the Dart SDK (`dart:async`).
 
+## Why use this package?
+
+- Centralize completer start, completion, error, and reset state instead of
+  repeating nullable-completer checks.
+- Avoid emitting into null or closed stream controllers during async teardown.
+- Give services one small lifecycle mixin for controller creation and disposal.
+
 License: [Apache-2.0](LICENSE). Issues:
 [github.com/redjadet/ilkersevim_async_lifecycle/issues](https://github.com/redjadet/ilkersevim_async_lifecycle/issues).
 
@@ -10,7 +17,7 @@ License: [Apache-2.0](LICENSE). Issues:
 
 ```yaml
 dependencies:
-  ilkersevim_async_lifecycle: ^0.1.0
+  ilkersevim_async_lifecycle: ^0.1.3
 ```
 
 Requires Dart `>=3.12.0`.
@@ -44,8 +51,9 @@ class MyService with StreamControllerLifecycle<String> {
 
 ## Out of scope
 
-`DisposableBag`, `SubscriptionManager`, and `TimerHandleManager` are not part
-of this package (they depend on workspace-coupled timer types).
+General resource groups such as `DisposableBag`, `SubscriptionManager`, and
+`TimerHandleManager` belong to
+[`ilkersevim_disposables`](https://pub.dev/packages/ilkersevim_disposables).
 
 ## API stability
 
