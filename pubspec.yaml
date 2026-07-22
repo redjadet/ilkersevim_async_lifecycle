@@ -1,0 +1,19 @@
+name: ilkersevim_async_lifecycle
+description: >-
+  Completer helpers and safe StreamController lifecycle utilities for Dart
+  async code.
+version: 0.1.0
+repository: https://github.com/redjadet/ilkersevim_async_lifecycle
+homepage: https://github.com/redjadet/ilkersevim_async_lifecycle
+issue_tracker: https://github.com/redjadet/ilkersevim_async_lifecycle/issues
+topics:
+  - async
+  - streams
+  - dart
+
+environment:
+  sdk: '>=3.12.0 <4.0.0'
+
+dev_dependencies:
+  lints: ^6.1.0
+  test: ^1.31.0
