@@ -61,8 +61,25 @@ class CompleterHelper<T> {
     return didComplete;
   }
 
-  /// Clears any stored completer without completing it.
-  void reset() {
+  /// Clears any stored completer. If a waiter is still pending, completes it
+  /// with an error so callers do not hang forever.
+  ///
+  /// Prefer [completeAndReset] / [completeErrorAndReset] when the outcome is
+  /// known. Use [reset] only to abandon work; waiters receive [StateError]
+  /// unless [error] is provided.
+  void reset({final Object? error, final StackTrace? stackTrace}) {
+    final Completer<T>? current = pending;
     _completer = null;
+    if (current == null) {
+      return;
+    }
+    current.completeError(
+      error ??
+          StateError(
+            'CompleterHelper.reset() discarded a pending future without '
+            'completion',
+          ),
+      stackTrace,
+    );
   }
 }
