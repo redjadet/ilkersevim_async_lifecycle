@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4
+
+- `CompleterHelper.reset` now completes pending waiters with `StateError`
+  (or a caller-supplied error) so abandoned futures cannot hang forever.
+
+
 ## 0.1.3
 
 - Explain how lifecycle helpers prevent double completion and stream emissions

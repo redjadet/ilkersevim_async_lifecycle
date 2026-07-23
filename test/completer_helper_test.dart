@@ -74,5 +74,13 @@ void main() {
         throwsA(isA<ArgumentError>()),
       );
     });
+
+    test('reset completes pending waiters with StateError', () async {
+      final completer = stringHelper.start();
+      final Future<String> pending = completer.future;
+      stringHelper.reset();
+      await expectLater(pending, throwsA(isA<StateError>()));
+      expect(stringHelper.pending, isNull);
+    });
   });
 }
