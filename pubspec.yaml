@@ -2,7 +2,7 @@ name: ilkersevim_async_lifecycle
 description: >-
   Avoid double completion and StreamController add-after-close errors with
   reusable, dependency-free Dart lifecycle helpers.
-version: 0.1.4
+version: 0.1.5
 repository: https://github.com/redjadet/ilkersevim_async_lifecycle
 homepage: https://github.com/redjadet/ilkersevim_async_lifecycle
 issue_tracker: https://github.com/redjadet/ilkersevim_async_lifecycle/issues
@@ -12,7 +12,7 @@ topics:
   - dart
 
 environment:
-  sdk: '>=3.12.0 <4.0.0'
+  sdk: '>=3.13.0 <4.0.0'
 
 dev_dependencies:
   lints: ^6.1.0

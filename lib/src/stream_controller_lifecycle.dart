@@ -17,7 +17,7 @@ abstract final class StreamControllerSafeEmit {
   StreamControllerSafeEmit._();
 
   /// Adds [value] to [controller] only if it is not null and not closed.
-  static void safeAdd<T>(final StreamController<T>? controller, final T value) {
+  static void safeAdd<T>(StreamController<T>? controller, T value) {
     if (controller != null && !controller.isClosed) {
       controller.add(value);
     }
@@ -25,9 +25,9 @@ abstract final class StreamControllerSafeEmit {
 
   /// Adds [error] to [controller] only if it is not null and not closed.
   static void safeAddError(
-    final StreamController<dynamic>? controller,
-    final Object error, [
-    final StackTrace? stackTrace,
+    StreamController<dynamic>? controller,
+    Object error, [
+    StackTrace? stackTrace,
   ]) {
     if (controller != null && !controller.isClosed) {
       controller.addError(error, stackTrace);
@@ -78,7 +78,7 @@ mixin StreamControllerLifecycle<T> {
   ///
   /// Note: The controller should be properly disposed using [disposeController]
   /// when no longer needed to avoid resource leaks.
-  void safeEmit(final T value) {
+  void safeEmit(T value) {
     final StreamController<T>? controller = _controller;
     if (controller != null && !controller.isClosed) {
       controller.add(value);
@@ -88,7 +88,7 @@ mixin StreamControllerLifecycle<T> {
   /// Safely emits an error to the stream controller.
   ///
   /// Checks if the controller exists and is not closed before adding the error.
-  void safeEmitError(final Object error, [final StackTrace? stackTrace]) {
+  void safeEmitError(Object error, [StackTrace? stackTrace]) {
     final StreamController<T>? controller = _controller;
     if (controller != null && !controller.isClosed) {
       controller.addError(error, stackTrace);
@@ -111,8 +111,8 @@ mixin StreamControllerLifecycle<T> {
   /// If a controller already exists, it will be disposed first.
   /// Optionally accepts onListen and onCancel callbacks.
   Future<void> createController({
-    final void Function()? onListen,
-    final Future<void> Function()? onCancel,
+    void Function()? onListen,
+    Future<void> Function()? onCancel,
   }) async {
     await disposeController();
     _controller = StreamController<T>.broadcast(

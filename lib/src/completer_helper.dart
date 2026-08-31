@@ -24,7 +24,7 @@ class CompleterHelper<T> {
   }
 
   /// Completes the pending completer when available.
-  bool complete([final T? value]) {
+  bool complete([T? value]) {
     final Completer<T>? current = pending;
     if (current == null) return false;
     if (value == null && null is! T) {
@@ -37,7 +37,7 @@ class CompleterHelper<T> {
   }
 
   /// Completes the pending completer with an error when available.
-  bool completeError(final Object error, [final StackTrace? stackTrace]) {
+  bool completeError(Object error, [StackTrace? stackTrace]) {
     final Completer<T>? current = pending;
     if (current == null) return false;
     current.completeError(error, stackTrace);
@@ -45,7 +45,7 @@ class CompleterHelper<T> {
   }
 
   /// Completes the pending completer and resets internal state.
-  bool completeAndReset([final T? value]) {
+  bool completeAndReset([T? value]) {
     final bool didComplete = complete(value);
     _completer = null;
     return didComplete;
@@ -53,8 +53,8 @@ class CompleterHelper<T> {
 
   /// Completes the pending completer with an error and resets internal state.
   bool completeErrorAndReset(
-    final Object error, [
-    final StackTrace? stackTrace,
+    Object error, [
+    StackTrace? stackTrace,
   ]) {
     final bool didComplete = completeError(error, stackTrace);
     _completer = null;
@@ -67,7 +67,7 @@ class CompleterHelper<T> {
   /// Prefer [completeAndReset] / [completeErrorAndReset] when the outcome is
   /// known. Use [reset] only to abandon work; waiters receive [StateError]
   /// unless [error] is provided.
-  void reset({final Object? error, final StackTrace? stackTrace}) {
+  void reset({Object? error, StackTrace? stackTrace}) {
     final Completer<T>? current = pending;
     _completer = null;
     if (current == null) {

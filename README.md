@@ -20,7 +20,7 @@ dependencies:
   ilkersevim_async_lifecycle: ^0.1.3
 ```
 
-Requires Dart `>=3.12.0`.
+Requires Dart `>=3.13.0`.
 
 ## CompleterHelper
 
