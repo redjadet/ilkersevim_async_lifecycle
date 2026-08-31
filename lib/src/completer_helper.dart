@@ -52,10 +52,7 @@ class CompleterHelper<T> {
   }
 
   /// Completes the pending completer with an error and resets internal state.
-  bool completeErrorAndReset(
-    Object error, [
-    StackTrace? stackTrace,
-  ]) {
+  bool completeErrorAndReset(Object error, [StackTrace? stackTrace]) {
     final bool didComplete = completeError(error, stackTrace);
     _completer = null;
     return didComplete;
