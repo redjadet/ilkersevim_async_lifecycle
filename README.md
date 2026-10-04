@@ -17,7 +17,7 @@ License: [Apache-2.0](LICENSE). Issues:
 
 ```yaml
 dependencies:
-  ilkersevim_async_lifecycle: ^0.1.3
+  ilkersevim_async_lifecycle: ^0.1.5
 ```
 
 Requires Dart `>=3.13.0`.
